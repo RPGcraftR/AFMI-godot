@@ -3,8 +3,8 @@
 AFMI-Godot is a Godot plugin designed to import Azgaar's Fantasy Map Generator (FMG) maps into Godot projects.
 
 >[!NOTE]
->As of right now, Godot 4.7 has been tested and confirmed to work.
->The plugin should work on all Godot versions 4+. <br>
+>As of right now, Godot 4.7.2 has been tested and confirmed to work.
+>The plugin should work on all Godot versions 4.7+. <br>
 >Latest Azgaar FMG (v1.150.0) is supported. Older versions may work. Depends on the changes to the Datamodel from FMG side.
 
 
