@@ -49,6 +49,7 @@ The plugin consists of two main parts:
   - Provinces
   - Rivers
   - Features
+  <br>
   *Drawback:* Each extensive property is stored in its own full `PackedInt32Array`. Enabling a single extensive property consumes memory roughly equal to all default properties combined.
 
 ---
