@@ -8,7 +8,7 @@ AFMI-Godot is a Godot plugin designed to import Azgaar's Fantasy Map Generator (
 
 The plugin consists of two main parts:
 - An **EditorImportPlugin** that integrates an import option for `*.json` files into Godot's resource import system.
-- An **AzgaarMap** custom resource that holds imported map data in a memory-efficient data structure and provides O(1) lookup by pixel coordinate or cell ID.
+- An **AzgaarMap** custom resource that holds imported map data in a memory-efficient data structure and provides O(1) time lookup by pixel coordinate or cell ID.
 
 ### Supported Export Types
 - **Supported:** `Full JSON` exports directly exported from Azgaar's Fantasy Map Generator.
