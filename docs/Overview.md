@@ -32,7 +32,7 @@ This plugin is implemented in two parts.
 
 The import option `AzgaarMap` in Godot import dock. When opening a `*.json` file, you should see the following screen in the import dock.
 
-![Godot import dock for a JSON file after enabling AFMI-Godot plugin](/img/import-dock.png)
+![Godot import dock for a JSON file after enabling AFMI-Godot plugin](/docs/img/import-dock.png)
 
 #### Import Options
 
@@ -64,7 +64,7 @@ The custom resource `AzgaarMap`. Saves all map related data and provides methods
 
 Values in the resource are **NOT** designed to be changed after creation. Although there is nothing preventing a script from modifying data arrays, it's strongly discouraged.
 
-![AzgaarMap resource attached to a script in the inspector](/img/azgaarmap-resource.png)
+![AzgaarMap resource attached to a script in the inspector](/docs/img/azgaarmap-resource.png)
 
 ### Export Variables
 
@@ -81,8 +81,8 @@ Values in the resource are **NOT** designed to be changed after creation. Althou
 # Reading Values
 
 <p float="left">
-  <img src="/img/azgaar-web-editor-map.png" width="49%" />
-  <img src="/img/godot-editor-map.png" width="49%" />
+  <img src="/docs/img/azgaar-web-editor-map.png" width="49%" />
+  <img src="/docs/img/godot-editor-map.png" width="49%" />
 </p>
 
 
