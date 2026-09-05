@@ -174,6 +174,9 @@ func religion_at_pixel(pixel:Vector2i) -> Dictionary:
 func state_at_pixel(pixel:Vector2i) -> Dictionary:
 	return state_by_id(state_id_at_cell(cell_id_at_pixel(pixel)))
 
+func height_at_pixel(pixel:Vector2i) -> int:
+	return height_at_cell(cell_id_at_pixel(pixel))
+
 func burg_at_pixel(pixel:Vector2i) -> Dictionary:
 	return burg_by_id(burg_id_at_cell(cell_id_at_pixel(pixel)))
 
