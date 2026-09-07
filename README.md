@@ -105,7 +105,7 @@ func _ready() -> void:
 
 ## API Summary
 
-- **Pixel Lookups:** `cell_id_at_pixel(pixel)`, `biome_at_pixel(pixel)`, `culture_at_pixel(pixel)`, `religion_at_pixel(pixel)`, `state_at_pixel(pixel)`, `burg_at_pixel(pixel)`, `province_at_pixel(pixel)`, `river_at_pixel(pixel)`, `feature_at_pixel(pixel)`.
+- **Pixel Lookups:** `cell_id_at_pixel(pixel)`, `biome_at_pixel(pixel)`, `culture_at_pixel(pixel)`, `religion_at_pixel(pixel)`, `state_at_pixel(pixel)`, `burg_at_pixel(pixel)`, `province_at_pixel(pixel)`, `river_at_pixel(pixel)`, `feature_at_pixel(pixel)`, `height_at_pixel(pixel)`.
 - **Cell ID Lookups:** `def_prop_ids_at_cell(cell_id)`, `biome_id_at_cell(cell_id)`, `culture_id_at_cell(cell_id)`, `religion_id_at_cell(cell_id)`, `state_id_at_cell(cell_id)`, `height_at_cell(cell_id)`, `burg_id_at_cell(cell_id)`, `province_id_at_cell(cell_id)`, `river_id_at_cell(cell_id)`, `feature_id_at_cell(cell_id)`.
 - **ID Metadata Lookups:** `biome_by_id(id)`, `culture_by_id(id)`, `religion_by_id(id)`, `state_by_id(id)`, `burg_by_id(id)`, `province_by_id(id)`, `river_by_id(id)`, `feature_by_id(id)`.
 
