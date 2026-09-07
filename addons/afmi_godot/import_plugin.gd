@@ -68,7 +68,9 @@ func _get_import_options(path, preset_index):
 		_:
 			return []
 
-#Loading screen
+func _get_option_visibility(path, option_name, options):
+	return true
+
 var progress_dialog : AcceptDialog
 var progress_label : Label
 var resource : AzgaarMap
@@ -77,6 +79,9 @@ var states_map : Image
 var provinces_map : Image
 var rivers_map : Image
 var burgs_map : Image
+var height_map : Image
+var cultures_map : Image
+var religions_map : Image
 
 #Helper functions.
 func hex_to_rgb(array : Array) -> Array:
@@ -114,7 +119,10 @@ func reorder_array(array : Array, begins_with_1 = true) -> Array:
 #Some arrays (provinces) have 0 at 0th index. 
 #Replaces them with a dummy dictionary for visualizing.
 func add_proper_idx0(array: Array) -> Array:
-	array[0] = {"color":"#000000"}
+	array[0] = {
+		"name" : false,
+		"color":"#000000"
+		}
 	return array
 
 #Core functions
@@ -187,13 +195,13 @@ func process_map(map:Dictionary,sampling_scale,burgs,provinces,rivers,features):
 	#Extensive properties
 	var mapdata_arrays = build_cell_arrays(map["pack"]["cells"],[burgs,provinces,rivers,features])
 	if burgs:
-		resource.burgs = map["pack"]["burgs"]
+		resource.burgs = add_proper_idx0(map["pack"]["burgs"])
 		resource.burgs_array = mapdata_arrays[1]
 	if provinces:
 		resource.provinces = hex_to_rgb(add_proper_idx0(map["pack"]["provinces"]))
 		resource.provinces_array = mapdata_arrays[2]
 	if rivers:
-		resource.rivers = map["pack"]["rivers"]
+		resource.rivers = add_proper_idx0(map["pack"]["rivers"])
 		resource.rivers_array = mapdata_arrays[3]
 	if features:
 		resource.features = trim_field(map["pack"]["features"],"vertices")
@@ -246,9 +254,31 @@ func visualize_burgs(maps_save_path):
 	burgs_map = img
 	burgs_map.save_png(maps_save_path + "/burgs.png")
 
-func _get_option_visibility(path, option_name, options):
-	return true
-	
+func visualize_height(maps_save_path):
+	var img = Image.create_empty(roundi(resource.size.x*resource.scale),roundi(resource.size.y*resource.scale),false,Image.FORMAT_R8)
+	for i in roundi(resource.size.x*resource.scale):
+		for j in roundi(resource.size.y*resource.scale):
+			var height = float(resource.height_at_pixel(Vector2i(i,j)))/100
+			img.set_pixel(i,j,Color(height,height,height))
+	height_map = img
+	height_map.save_png(maps_save_path + "/height.png")
+
+func visualize_cultures(maps_save_path):
+	var img = Image.create_empty(roundi(resource.size.x*resource.scale),roundi(resource.size.y*resource.scale),false,Image.FORMAT_RGBF)
+	for i in roundi(resource.size.x*resource.scale):
+		for j in roundi(resource.size.y*resource.scale):
+			img.set_pixel(i,j,resource.culture_at_pixel(Vector2i(i,j))["color"])
+	cultures_map = img
+	cultures_map.save_png(maps_save_path + "/cultures.png")
+
+func visualize_religions(maps_save_path):
+	var img = Image.create_empty(roundi(resource.size.x*resource.scale),roundi(resource.size.y*resource.scale),false,Image.FORMAT_RGBF)
+	for i in roundi(resource.size.x*resource.scale):
+		for j in roundi(resource.size.y*resource.scale):
+			img.set_pixel(i,j,resource.religion_at_pixel(Vector2i(i,j))["color"])
+	religions_map = img
+	religions_map.save_png(maps_save_path + "/religions.png")
+
 func _import(source_file, save_path, options, r_platform_variants, r_gen_files):
 	if not FileAccess.file_exists(source_file):
 		return ERR_DOES_NOT_EXIST
@@ -286,6 +316,12 @@ func _import(source_file, save_path, options, r_platform_variants, r_gen_files):
 			r_gen_files.append(options["image_save_path"]+"/biomes.png")
 			visualize_states(options["image_save_path"])
 			r_gen_files.append(options["image_save_path"]+"/states.png")
+			visualize_cultures(options["image_save_path"])
+			r_gen_files.append(options["image_save_path"]+"/cultures.png")
+			visualize_religions(options["image_save_path"])
+			r_gen_files.append(options["image_save_path"]+"/religions.png")
+			visualize_height(options["image_save_path"])
+			r_gen_files.append(options["image_save_path"]+"/height.png")
 			if options["provinces"]:
 				visualize_provinces(options["image_save_path"]) 
 				r_gen_files.append(options["image_save_path"]+"/provinces.png")
