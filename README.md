@@ -25,6 +25,7 @@ AFMI-Godot is a Godot plugin designed to import Azgaar's Fantasy Map Generator (
 
 - [Quickstart](https://github.com/RPGcraftR/AFMI-godot/wiki/Quickstart)
 - [Overview](https://github.com/RPGcraftR/AFMI-godot/wiki/Overview)
+- [Compatibility](https://github.com/RPGcraftR/AFMI-godot/wiki/Compatibility)
 - [Reference](https://github.com/RPGcraftR/AFMI-godot/wiki/Reference)
 - [Technical details and limitations](https://github.com/RPGcraftR/AFMI-godot/wiki/Notes)
 
