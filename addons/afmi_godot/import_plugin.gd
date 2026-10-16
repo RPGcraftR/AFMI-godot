@@ -289,13 +289,13 @@ func _import(source_file, save_path, options, r_platform_variants, r_gen_files):
 	if json_string.strip_edges().is_empty():
 		return ERR_FILE_CORRUPT  
 	#Truncating all JSON after grid because of unicode issues.
-	var grid_index = json_string.find('"grid"')
-	if grid_index == -1:
-		grid_index = json_string.find('grid') 
+	var strip_index = json_string.find('"markers"')
+	if strip_index == -1:
+		strip_index = json_string.find('markers') 
 		 
 	var final_json = ""
-	if grid_index != -1:
-		final_json = json_string.left(grid_index)
+	if strip_index != -1:
+		final_json = json_string.left(strip_index)
 	else:
 		final_json = json_string 
 		   
@@ -304,7 +304,7 @@ func _import(source_file, save_path, options, r_platform_variants, r_gen_files):
 	if final_json.ends_with(","):
 		final_json = final_json.substr(0, final_json.length() - 1)
 		final_json = final_json.strip_edges()
-	final_json += "}"
+	final_json += "},}"
 	var json = JSON.new()
 	var error = json.parse(final_json)
 	#Check if parsing succeeded AND if the result is actually a Dictionary. 
@@ -333,6 +333,6 @@ func _import(source_file, save_path, options, r_platform_variants, r_gen_files):
 				r_gen_files.append(options["image_save_path"]+"/burgs.png")
 		return ResourceSaver.save(resource, save_path + "." + _get_save_extension())
 	else:
-		printerr(json.get_error_message())
+		printerr(json.get_error_message() + " on " + str(json.get_error_line()))
 		return ERR_PARSE_ERROR
 	
