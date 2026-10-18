@@ -16,7 +16,11 @@ AFMI-Godot is a Godot plugin designed to import Azgaar's Fantasy Map Generator (
 
 ### Installation
 
-1. Clone this repository or download the repository as a zip and extract it.
+##### Method 1
+- Install [AFMI-Godot](https://store.godotengine.org/asset/rpgcraft/afmi-godot/) from within the engine using the Asset Store.
+
+##### Method 2
+1. Clone this repository, download the repository as a zip or download the addon zip file from releases and extract it.
 2. Copy `addons` directory into your project directory.
 3. Open Godot editor and enable AFMI-Godot plugin in Settings -> Plugins.
 4. Restart the editor.
